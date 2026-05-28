@@ -1,0 +1,187 @@
+.encabezado-borde {
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
+
+.navegacion-perfil {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 24px;
+}
+
+.nav-izquierda {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex: 1;
+}
+
+.nav-derecha {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.barra-busqueda-perfil {
+    display: flex;
+    align-items: center;
+    background-color: rgb(247, 247, 247);
+    border-radius: 24px;
+    padding: 5px 16px;
+    height: 48px;
+    flex: 1;
+    max-width: 600px;
+}
+
+.barra-busqueda-perfil input {
+    flex: 1;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    outline: none;
+    font-size: 16px;
+    color: rgb(26, 26, 26);
+}
+
+.boton-lupa {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: rgb(136, 136, 136);
+    font-size: 18px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.pagina-perfil {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+.cabecera-perfil {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 50px;
+}
+
+.tarjeta-usuario {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.avatar-principal {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.informacion-usuario {
+    display: flex;
+    flex-direction: column;
+}
+
+.nombre-perfil {
+    font-size: 36px;
+    font-weight: 700;
+    color: rgb(26, 26, 26);
+}
+
+.bio-perfil {
+    font-size: 16px;
+    color: rgb(85, 85, 85);
+    margin-top: 8px;
+    max-width: 450px;
+    line-height: 1.4;
+}
+
+.boton-editar {
+    background-color: rgb(230, 0, 35);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+.boton-editar:hover {
+    background-color: rgb(173, 8, 27);
+}
+
+.seccion-pestanas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.pestanas-izquierda {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.enlace-pestana {
+    text-decoration: none;
+    color: rgb(85, 85, 85);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.enlace-pestana span {
+    color: rgb(136, 136, 136);
+}
+
+.enlace-pestana.activo {
+    background-color: rgb(26, 26, 26);
+    color: rgb(255, 255, 255);
+}
+
+.enlace-pestana.activo span {
+    color: rgb(170, 170, 170);
+}
+
+.filtros-derecha {
+    display: flex;
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.boton-filtro {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(224, 224, 224);
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    color: rgb(26, 26, 26);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.boton-filtro.deshabilitado {
+    color: rgb(204, 204, 204);
+    border-color: rgb(240, 240, 240);
+    cursor: default;
+}
