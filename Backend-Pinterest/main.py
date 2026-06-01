@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from db import create_all_tables
 from fastapi.middleware.cors import CORSMiddleware
-from app.router import routers
+from app.router import routerregister
 
 pinterest = FastAPI(lifespan=create_all_tables)
 
@@ -11,4 +11,4 @@ pinterest.add_middleware( CORSMiddleware,
                    allow_methods=["*"], 
                    allow_headers=["*"])
 
-pinterest.include_router(routers.router)
+pinterest.include_router(routerregister.routerl)
