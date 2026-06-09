@@ -1,0 +1,10 @@
+{
+  "name": "pinterest-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix Frontend-Pinterest",
+    "build": "npm run build --prefix Frontend-Pinterest",
+    "preview": "npm run preview --prefix Frontend-Pinterest"
+  }
+}
