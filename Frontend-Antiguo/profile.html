@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinterest/profile</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/prof.css">
+    <link rel="icon" type="image/webp" href="assets/images/pinterest-logo.webp">
+</head>
+<body>
+    <header class="encabezado encabezado-borde">
+        <nav class="navegacion-perfil">
+            <article class="nav-izquierda">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/pinterest-logo.webp" alt="Logo de Pinterest" class="imagen-logo">
+                    <span class="texto-logo">Pinterest</span>
+                </a>
+                
+                <form class="barra-busqueda-perfil">
+                    <input type="text" placeholder="Busca lo que gustes..">
+                    <button type="submit" class="boton-lupa">&#128269;</button>
+                </form>
+            </article>
+            
+            <menu class="nav-derecha">
+                <span class="icono-nav">&#8230;</span>
+                <img src="assets/images/perfil.webp" alt="Perfil" class="avatar-nav">
+            </menu>
+        </nav>
+    </header>
+
+    <main class="pagina-perfil">
+        <section class="cabecera-perfil">
+            <article class="tarjeta-usuario">
+                <img src="assets/images/perfil.webp" alt="Andrés Velasco" class="avatar-principal">
+                <div class="informacion-usuario">
+                    <h1 class="nombre-perfil">Andrés Velasco</h1>
+                    <p class="bio-perfil">Estudiante de Ingeniería en Sistemas. Apasionado por la la carreara, el desarrollo en Java y el aprendizaje autonomo.</p>
+                </div>
+            </article>
+            <button class="boton-editar">
+                &#9998; Editar perfil
+            </button>
+        </section>
+
+        <section class="seccion-pestanas">
+            <nav class="pestanas-izquierda">
+                <a href="#" class="enlace-pestana">Destacados <span>0</span></a>
+                <a href="#" class="enlace-pestana activo">Galería <span>18</span></a>
+                <a href="#" class="enlace-pestana">Colecciones</a>
+            </nav>
+            
+            <menu class="filtros-derecha">
+                <button class="boton-filtro deshabilitado">Añadir a destacados</button>
+                <button class="boton-filtro">Fotos y videos &#9662;</button>
+                <button class="boton-filtro">Favoritos &#9662;</button>
+            </menu>
+        </section>
+
+        <section class="cuadricula-galeria">
+            <img src="https://images.pexels.com/photos/12379827/pexels-photo-12379827.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Galería">
+            <img src="https://images.pexels.com/photos/3724836/pexels-photo-3724836.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Galería">
+            <img src="https://images.pexels.com/photos/15320566/pexels-photo-15320566.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Galería">
+            <img src="https://images.pexels.com/photos/35101544/pexels-photo-35101544.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Galería">
+            <img src="https://images.pexels.com/photos/7513474/pexels-photo-7513474.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Galería">
+            <img src="https://images.pexels.com/photos/5466870/pexels-photo-5466870.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Galería">
+            <img src="https://images.pexels.com/photos/9329047/pexels-photo-9329047.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Galería">
+            <img src="https://images.pexels.com/photos/1666667/pexels-photo-1666667.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Galería">
+            <img src="https://images.pexels.com/photos/30150825/pexels-photo-30150825.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Galería">
+        </section>
+    </main>
+</body>
+</html>
