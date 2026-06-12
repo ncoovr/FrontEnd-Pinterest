@@ -4,9 +4,9 @@ export default function PasswordInput({ id, label, placeholder, valor, alCambiar
     const [mostrar, setMostrar] = useState(false);
 
     return (
-        <div className="form-group">
+        <div className="grupo-formulario">
             <label htmlFor={id}>{label}</label>
-            <div className="password-wrapper">
+            <div className="contenedor-clave">
                 <input 
                     type={mostrar ? "text" : "password"} 
                     id={id} 
@@ -17,14 +17,14 @@ export default function PasswordInput({ id, label, placeholder, valor, alCambiar
                 />
                 <button 
                     type="button" 
-                    className="toggle-password" 
+                    className="boton-ojito" 
                     onClick={() => setMostrar(!mostrar)}
                     aria-label="Mostrar u ocultar tu contraseña"
                 >
                     {mostrar ? "🙈" : "👁️"}
                 </button>
             </div>
-            <a href="#" className="forgot-password">¿Olvidaste tu contraseña?</a>
+            <a href="#" className="enlace-olvido">¿Olvidaste tu contraseña?</a>
         </div>
     );
 }

@@ -1,102 +1,73 @@
-import "./Login.scss";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Login.scss"; 
+import Button from "../../components/atoms/Button/Button";
+import Input from "../../components/atoms/Input/Input";
+import PasswordInput from "../../components/molecules/PasswordInput/PasswordInput";
 
-function Login() {
+export default function Login() {
     const [correo, setCorreo] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    async function handleSubmit(event){
-            event.preventDefault()
-            const datos = {
-                correo,
-                password
-            }
-            const response = await fetch(
-                "http://localhost:8000/login/",
-                {
-                    method: "POST",
-                    body: JSON.stringify(datos),
-                    headers: {
-                        "Content-Type":"application/json"
-                    }
-                }
-            )
-            const data = await response.json()
-            console.log(data)
-            if(data.success){
-                navigate("/Index")
+    async function handleSubmit(event) {
+        event.preventDefault();
+        const datos = { correo, password };
+        
+        try {
+            const response = await fetch("http://localhost:8000/login/", {
+                method: "POST",
+                body: JSON.stringify(datos),
+                headers: { "Content-Type": "application/json" }
+            });
+            const data = await response.json();
+            
+            if (data.success) {
+                navigate("/index");
             } else {
-                console.log("Login incorrecto")
+                console.log("Login incorrecto");
             }
+        } catch (error) {
+            console.error("Error al conectar con la API de U|Stream", error);
+        }
     }
-    return (
-        <>
 
-        <main className="login-container">
-            <header className="header-brand">
-            <figure className="logo">
-                <span role="img" aria-label="Logo Pinterest">
-                🐐
-                </span>
-            </figure>
-            <h1>Te damos la bienvenida a esta web page</h1>
-            <p>Introduce tus credenciales para ingresar</p>
+    return (
+        <main className="contenedor-login">
+            <header className="cabecera-login">
+                <figure className="logo">
+                    <span role="img" aria-label="Logo U|Gallery">🐐</span>
+                </figure>
+                <h1>Te damos la bienvenida a U|Gallery</h1>
+                <p>Introduce tus credenciales para ingresar</p>
             </header>
 
             <form onSubmit={handleSubmit}>
-            <div className="form-group">
-                <label htmlFor="login-email">Correo Electrónico</label>
-                <input
-                type="email"
-                id="login-email"
-                placeholder="Correo Electrónico"
-                required
-                value={correo}
-                onChange = {(event)=> 
-                    setCorreo(event.target.value)
-                }
+                <Input 
+                    id="login-email"
+                    label="Correo Electrónico"
+                    tipo="email"
+                    placeholder="Tu correo"
+                    valor={correo}
+                    alCambiar={(e) => setCorreo(e.target.value)}
                 />
-            </div>
 
-            <div className="form-group">
-                <label htmlFor="login-password">Contraseña</label>
-                <div className="password-wrapper">
-                <input
-                    type="password"
+                <PasswordInput 
                     id="login-password"
+                    label="Contraseña"
                     placeholder="Introduce tu contraseña"
-                    required
-                    value={password}
-                    onChange={(event)=>
-                        setPassword(event.target.value)
-                    }
+                    valor={password}
+                    alCambiar={(e) => setPassword(e.target.value)}
                 />
-                <button
-                    type="button"
-                    className="toggle-password"
-                    aria-label="Mostrar u ocultar tu contraseña"
-                ></button>
-                </div>
-                <a href="#" className="forgot-password">
-                ¿Olvidaste tu contraseña?
-                </a>
-            </div>
 
-            <button type="submit" className="btn-submit">
-                Iniciar Sesión
-            </button>
+                <Button texto="Iniciar Sesión" tipo="submit" />
             </form>
 
-            <footer className="form-footer">
-            <p className="register-redirect">
-                ¿Aún no estás en la web? <a href="register.html">Regístrate</a>
-            </p>
+            <footer className="pie-formulario">
+                <p className="texto-registro">
+                    No tienes una cuenta? <a href="/register">Regístrate</a>
+                </p>
             </footer>
         </main>
-        </>
     );
 }
-
-export default Login;
