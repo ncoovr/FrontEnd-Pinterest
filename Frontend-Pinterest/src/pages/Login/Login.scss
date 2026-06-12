@@ -1,5 +1,4 @@
-
-.login-container {
+.contenedor-login {
     background-color: #1c1d22;
     padding: 40px 35px;
     border-radius: 32px;
@@ -9,7 +8,7 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.header-brand {
+.cabecera-login {
     margin-bottom: 28px;
 }
 
@@ -18,7 +17,7 @@
     margin-bottom: 12px;
 }
 
-.header-brand h1 {
+.cabecera-login h1 {
     font-size: 26px;
     font-weight: 600;
     margin-bottom: 10px;
@@ -26,17 +25,17 @@
     line-height: 1.2;
 }
 
-.header-brand p {
+.cabecera-login p {
     color: #a5a6a9;
     font-size: 14px;
 }
 
-.form-group {
+.grupo-formulario {
     margin-bottom: 18px;
     text-align: left;
 }
 
-.form-group label {
+.grupo-formulario label {
     display: block;
     font-size: 14px;
     margin-bottom: 8px;
@@ -44,7 +43,7 @@
     font-weight: 500;
 }
 
-.form-group input {
+.grupo-formulario input {
     width: 100%;
     padding: 12px 16px;
     background-color: #24252a;
@@ -56,20 +55,20 @@
     transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.form-group input:focus {
+.grupo-formulario input:focus {
     border-color: #0066cc;
     background-color: #2a2b32;
 }
 
-.password-wrapper {
+.contenedor-clave {
     position: relative;
 }
 
-.password-wrapper input {
+.contenedor-clave input {
     padding-right: 45px;
 }
 
-.toggle-password {
+.boton-ojito {
     position: absolute;
     right: 16px;
     top: 50%;
@@ -84,7 +83,7 @@
     justify-content: center;
 }
 
-.forgot-password {
+.enlace-olvido {
     display: inline-block;
     margin-top: 10px;
     font-size: 14px;
@@ -93,11 +92,11 @@
     font-weight: 500;
 }
 
-.forgot-password:hover {
+.enlace-olvido:hover {
     text-decoration: underline;
 }
 
-.btn-submit {
+.boton-enviar {
     width: 100%;
     padding: 13px;
     background-color: #e60023;
@@ -111,54 +110,22 @@
     transition: background-color 0.2s ease;
 }
 
-.btn-submit:hover {
+.boton-enviar:hover {
     background-color: #ad0018;
 }
 
-.divider {
-    margin: 20px 0;
-    color: #a5a6a9;
-    font-size: 14px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn-google {
-    width: 100%;
-    padding: 13px;
-    background-color: #24252a;
-    color: #e4e6eb;
-    border: 2px solid #3a3b3c;
-    border-radius: 24px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.btn-google:hover {
-    background-color: #3a3b3c;
-    border-color: #4e4f50;
-}
-
-.form-footer {
+.pie-formulario {
     margin-top: 28px;
     font-size: 14px;
     color: #a5a6a9;
 }
 
-.form-footer a {
+.pie-formulario a {
     color: #ffffff;
     text-decoration: none;
     font-weight: 600;
 }
 
-.form-footer a:hover {
+.pie-formulario a:hover {
     text-decoration: underline;
 }

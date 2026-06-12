@@ -52,13 +52,15 @@ export default function Login() {
                     alCambiar={(e) => setCorreo(e.target.value)}
                 />
 
-                <PasswordInput 
+              <PasswordInput 
                     id="login-password"
                     label="Contraseña"
                     placeholder="Introduce tu contraseña"
                     valor={password}
                     alCambiar={(e) => setPassword(e.target.value)}
                 />
+                
+                <a href="#" className="enlace-olvido">¿Olvidaste tu contraseña?</a>
 
                 <Button texto="Iniciar Sesión" tipo="submit" />
             </form>

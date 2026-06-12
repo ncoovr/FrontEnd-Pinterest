@@ -24,7 +24,6 @@ export default function PasswordInput({ id, label, placeholder, valor, alCambiar
                     {mostrar ? "🙈" : "👁️"}
                 </button>
             </div>
-            <a href="#" className="enlace-olvido">¿Olvidaste tu contraseña?</a>
         </div>
     );
 }
