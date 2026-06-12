@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./GalleryGrid.scss";
 
 export default function GalleryGrid() {
@@ -17,7 +18,9 @@ export default function GalleryGrid() {
     return (
         <section className="cuadricula-galeria">
             {imagenes.map((imgUrl, index) => (
-                <img key={index} src={imgUrl} alt={`Contenido de galería ${index + 1}`} />
+                <Link to="/post" key={index} className="enlace-tarjeta">
+                    <img src={imgUrl} alt={`Contenido de galería ${index + 1}`} />
+                </Link>
             ))}
         </section>
     );
