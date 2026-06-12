@@ -1,0 +1,78 @@
+.seccion-tendencias {
+    padding: 0 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cabecera-tendencias {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cabecera-tendencias h2 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.boton-tendencia {
+    border: 1px solid rgb(224, 224, 224);
+    background-color: rgb(255, 255, 255);
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
+    color: rgb(26, 26, 26);
+    transition: background-color 0.2s;
+}
+
+.boton-tendencia:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.contenedor-etiquetas {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    scrollbar-width: none; 
+}
+
+.contenedor-etiquetas::-webkit-scrollbar {
+    display: none; 
+}
+
+.etiqueta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgb(224, 224, 224);
+    background-color: rgb(255, 255, 255);
+    color: rgb(26, 26, 26);
+    padding: 6px 16px 6px 6px;
+    border-radius: 30px;
+    white-space: nowrap;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.etiqueta:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.imagen-etiqueta {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+}
+
+.etiqueta span:last-child {
+    color: rgb(136, 136, 136);
+    font-weight: 400;
+}
