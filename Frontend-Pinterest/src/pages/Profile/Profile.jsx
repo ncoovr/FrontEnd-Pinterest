@@ -1,30 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/organisms/Header/Header";
 import GalleryGrid from "../../components/organisms/GalleryGrid/GalleryGrid";
-import perfilImg from "../../assets/images/perfil.webp"; // Importamos tu foto local
+import EditProfileModal from "../../components/organisms/EditProfileModal/EditProfileModal";
+import perfilImg from "../../assets/images/perfil.webp";
 import "./Profile.scss";
 
 export default function Profile() {
+    const [nombre, setNombre] = useState("Andrés Velasco");
+    const [bio, setBio] = useState("Estudiante de Ingeniería en Sistemas. Apasionado por la carrera, el desarrollo en Java y el aprendizaje autónomo.");
+    
+    const [modalAbierto, setModalAbierto] = useState(false);
+
+    function guardarPerfil(nuevoNombre, nuevaBio) {
+        setNombre(nuevoNombre);
+        setBio(nuevaBio);
+    }
+
     return (
         <div className="pagina-principal">
             <Header />
             
             <main className="pagina-perfil">
-                {}
                 <section className="cabecera-perfil">
                     <article className="tarjeta-usuario">
                         <img src={perfilImg} alt="Avatar del usuario" className="avatar-principal" />
                         <div className="informacion-usuario">
-                            <h1 className="nombre-perfil">Andrés Velasco</h1>
-                            <p className="bio-perfil">Estudiante de Ingeniería en Sistemas. Apasionado por la carrera, el desarrollo en Java y el aprendizaje autónomo.</p>
+                            <h1 className="nombre-perfil">{nombre}</h1>
+                            <p className="bio-perfil">{bio}</p>
                         </div>
                     </article>
-                    <button className="boton-editar">
+                   <button className="boton-editar" onClick={() => setModalAbierto(true)}>
                         &#9998; Editar perfil
                     </button>
                 </section>
 
-                {}
                 <section className="seccion-pestanas">
                     <nav className="pestanas-izquierda">
                         <a href="#" className="enlace-pestana">Destacados <span>0</span></a>
@@ -39,9 +48,17 @@ export default function Profile() {
                     </menu>
                 </section>
 
-                {}
                 <GalleryGrid />
             </main>
+
+            {modalAbierto && (
+                <EditProfileModal 
+                    nombreActual={nombre} 
+                    bioActual={bio} 
+                    alCerrar={() => setModalAbierto(false)} 
+                    alGuardar={guardarPerfil} 
+                />
+            )}
         </div>
     );
 }
