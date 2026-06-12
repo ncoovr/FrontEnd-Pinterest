@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+    color: rgb(26, 26, 26);
+}
+
+.encabezado {
+    background-color: rgb(255, 255, 255);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navegacion-superior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 24px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: rgb(26, 26, 26);
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+.imagen-logo {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.menu-derecho {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+}
+
+.icono-nav {
+    font-size: 24px;
+    color: rgb(85, 85, 85);
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 1;
+    padding-bottom: 8px;
+}
+
+.avatar-nav {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.navegacion-central {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 5px 0 15px 0;
+}
+
+.navegacion-central a {
+    text-decoration: none;
+    color: rgb(85, 85, 85);
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+.navegacion-central a.activo {
+    background-color: rgb(26, 26, 26);
+    color: rgb(255, 255, 255);
+}
+
+.seccion-hero {
+    padding: 20px 24px 20px 24px;
+    max-width: 800px;
+}
+
+.contenido-hero h1 {
+    font-size: 48px;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.barra-busqueda {
+    display: flex;
+    align-items: center;
+    background-color: rgb(247, 247, 247);
+    border-radius: 24px;
+    padding: 5px 15px;
+    height: 48px;
+    width: 100%;
+}
+
+.barra-busqueda input {
+    flex: 1;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0 10px;
+    font-size: 16px;
+    outline: none;
+    color: rgb(26, 26, 26);
+}
+
+.boton-busqueda {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    padding: 0 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.seccion-tendencias {
+    padding: 0 24px;
+}
+
+.cabecera-tendencias {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cabecera-tendencias h2 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.boton-tendencia {
+    border: 1px solid rgb(224, 224, 224);
+    background-color: rgb(255, 255, 255);
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
+    color: rgb(26, 26, 26);
+}
+
+.contenedor-etiquetas {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    scrollbar-width: none;
+}
+
+.contenedor-etiquetas::-webkit-scrollbar {
+    display: none;
+}
+
+.etiqueta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgb(224, 224, 224);
+    background-color: rgb(255, 255, 255);
+    color: rgb(26, 26, 26);
+    padding: 6px 16px 6px 6px;
+    border-radius: 30px;
+    white-space: nowrap;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.imagen-etiqueta {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+}
+
+.etiqueta span:last-child {
+    color: rgb(136, 136, 136);
+    font-weight: 400;
+}
+
+.cuadricula-galeria {
+    column-count: 3;
+    column-gap: 20px;
+    padding: 0 24px 50px 24px;
+}
+
+.cuadricula-galeria img {
+    width: 100%;
+    margin-bottom: 20px;
+    display: block;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cuadricula-galeria img:hover {
+    transform: scale(1.05); 
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); 
+}
