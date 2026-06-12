@@ -80,3 +80,25 @@
     background-color: rgb(26, 26, 26);
     color: rgb(255, 255, 255);
 }
+
+.boton-crear-nav {
+    background-color: #e60023; 
+    color: #ffffff; 
+    border: none;
+    font-size: 28px; 
+    font-weight: 500;
+    cursor: pointer;
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    padding-bottom: 4px; 
+}
+
+.boton-crear-nav:hover {
+    background-color: #ad0018; 
+    transform: scale(1.05); 
+}

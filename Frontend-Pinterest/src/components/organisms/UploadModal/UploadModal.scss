@@ -1,0 +1,124 @@
+.fondo-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.contenedor-modal {
+    background-color: #1c1d22;
+    color: #ffffff;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    animation: aparecer 0.3s ease-out;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.cabecera-modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #3a3b3c;
+    padding-bottom: 15px;
+}
+
+.cabecera-modal h2 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.boton-cerrar {
+    background: none;
+    border: none;
+    color: #a5a6a9;
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.boton-cerrar:hover {
+    color: #ffffff;
+}
+
+.formulario-subida {
+    display: flex;
+    gap: 30px;
+}
+
+.zona-carga-imagen {
+    flex: 1;
+    background-color: #24252a;
+    border: 2px dashed #3a3b3c;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.zona-carga-imagen:hover {
+    border-color: #0066cc;
+}
+
+.caja-carga {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    color: #a5a6a9;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.icono-subida {
+    font-size: 32px;
+}
+
+.nombre-archivo {
+    color: #0066cc;
+    font-weight: 600;
+    text-align: center;
+    padding: 0 20px;
+    word-break: break-all;
+}
+
+.zona-detalles {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.zona-detalles textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #24252a;
+    border: 2px solid #3a3b3c;
+    border-radius: 16px;
+    color: #ffffff;
+    font-size: 15px;
+    outline: none;
+    resize: none;
+    transition: border-color 0.2s;
+}
+
+.zona-detalles textarea:focus {
+    border-color: #0066cc;
+}
