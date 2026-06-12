@@ -1,0 +1,82 @@
+.encabezado {
+    background-color: rgb(255, 255, 255);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
+
+.navegacion-superior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 24px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: rgb(26, 26, 26);
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+.menu-derecho {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.icono-nav {
+    font-size: 24px;
+    color: rgb(85, 85, 85);
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 1;
+    padding-bottom: 8px;
+}
+
+.avatar-nav {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e60023;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.navegacion-central {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 5px 0 15px 0;
+}
+
+.navegacion-central a {
+    text-decoration: none;
+    color: rgb(85, 85, 85);
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.navegacion-central a:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.navegacion-central a.activo {
+    background-color: rgb(26, 26, 26);
+    color: rgb(255, 255, 255);
+}
