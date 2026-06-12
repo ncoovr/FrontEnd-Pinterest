@@ -42,30 +42,19 @@
     padding-bottom: 8px;
 }
 
-.avatar-nav {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #e60023;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 18px;
-}
-
 .navegacion-central {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    align-items: center;
+    gap: 15px;
     padding: 5px 0 15px 0;
 }
 
 .navegacion-central a {
     text-decoration: none;
-    color: rgb(85, 85, 85);
-    font-weight: 500;
+    background-color: rgb(255, 255, 255);
+    color: rgb(26, 26, 26);
+    font-weight: 600;
     font-size: 16px;
     padding: 10px 20px;
     border-radius: 30px;
@@ -73,32 +62,86 @@
 }
 
 .navegacion-central a:hover {
-    background-color: rgb(240, 240, 240);
-}
-
-.navegacion-central a.activo {
     background-color: rgb(26, 26, 26);
     color: rgb(255, 255, 255);
 }
 
-.boton-crear-nav {
-    background-color: #e60023; 
-    color: #ffffff; 
+.contenedor-opciones {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.menu-desplegable {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    min-width: 160px;
+    z-index: 200;
+    padding: 8px 0;
+}
+
+.menu-desplegable a,
+.menu-desplegable button {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    text-decoration: none !important;
+    color: #1a1a1a !important;
+    font-size: 15px;
+    font-weight: 500;
+    background: transparent;
     border: none;
-    font-size: 28px; 
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-family: inherit;
+}
+
+.menu-desplegable a:hover,
+.menu-desplegable button:hover {
+    background-color: #f0f0f0;
+}
+
+.boton-crear-nav {
+    background-color: #e60023;
+    color: #ffffff;
+    border: none;
+    font-size: 28px;
     font-weight: 500;
     cursor: pointer;
-    width: 40px; 
+    width: 40px;
     height: 40px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: background-color 0.2s ease, transform 0.2s ease;
-    padding-bottom: 4px; 
+    padding-bottom: 4px;
 }
 
 .boton-crear-nav:hover {
-    background-color: #ad0018; 
-    transform: scale(1.05); 
+    background-color: #ad0018;
+    transform: scale(1.05);
+}
+
+.avatar-nav-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+    border: 1px solid #e0e0e0;
+    transition: opacity 0.2s;
+}
+
+.avatar-nav-img:hover {
+    opacity: 0.8;
 }

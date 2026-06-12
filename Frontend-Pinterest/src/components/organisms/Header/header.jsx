@@ -1,10 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UploadModal from "../UploadModal/UploadModal";
+import perfilImg from "../../../assets/images/perfil.webp";
 import "./Header.scss";
 
 export default function Header() {
     const [modalAbierto, setModalAbierto] = useState(false);
+    const [menuAbierto, setMenuAbierto] = useState(false);
+    const navigate = useNavigate();
+
+    function cerrarSesion() {
+        navigate("/login");
+    }
 
     return (
         <>
@@ -15,31 +22,51 @@ export default function Header() {
                         <span className="texto-logo">U|Gallery</span>
                     </Link>
                     
-                    <menu className="menu-derecho">
+                    <nav className="navegacion-central">
+                        <Link to="/index">Explorar</Link>
+                        
                         <button 
-                             className="boton-crear-nav" 
-                             onClick={() => setModalAbierto(true)}
-                              aria-label="Crear nuevo Pin"
-                                >
-                             +
+                            className="boton-crear-nav" 
+                            onClick={() => setModalAbierto(true)}
+                            aria-label="Crear nuevo Pin"
+                        >
+                            +
                         </button>
 
-                        <span className="icono-nav">&#8230;</span>
+                        <Link to="/profile">Perfil</Link>
+                    </nav>
+
+                    <menu className="menu-derecho">
+                        <div className="contenedor-opciones">
+                            <span 
+                                className="icono-nav" 
+                                onClick={() => setMenuAbierto(!menuAbierto)}
+                            >
+                                &#8230;
+                            </span>
+                            
+                            {menuAbierto && (
+                                <div className="menu-desplegable">
+                                    {/* Pasamos el state={{ abrirEdicion: true }} */}
+                                    <Link 
+                                        to="/profile" 
+                                        state={{ abrirEdicion: true }} 
+                                        onClick={() => setMenuAbierto(false)}
+                                    >
+                                        Editar perfil
+                                    </Link>
+                                    <button onClick={cerrarSesion}>Cerrar sesión</button>
+                                </div>
+                            )}
+                        </div>
+
                         <Link to="/profile">
-                            <div className="avatar-nav">N</div>
+                            <img src={perfilImg} alt="Tu Avatar" className="avatar-nav-img" />
                         </Link>
                     </menu>
                 </nav>
-
-                <nav className="navegacion-central">
-                    <Link to="/index" className="activo">Inicio</Link>
-                    <a href="#">Videos</a>
-                    <a href="#">Galería</a>
-                    <Link to="/profile">Perfil</Link>
-                </nav>
             </header>
 
-            {/* Si modalAbierto es true, se renderiza nuestro nuevo componente */}
             {modalAbierto && <UploadModal alCerrar={() => setModalAbierto(false)} />}
         </>
     );

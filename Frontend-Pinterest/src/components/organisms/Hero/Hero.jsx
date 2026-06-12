@@ -6,7 +6,7 @@ export default function Hero() {
     return (
         <section className="seccion-hero">
             <article className="contenido-hero">
-                <h1>Las mejores fotos del mundo mundial, imágenes inventadas para esta preciosa entrega.</h1>
+                <h1>Explora las mejores fotos en tendencia y descubre nuevas ideas y experiencias</h1>
                 <SearchBar placeholder="Busca lo que gustes.." />
             </article>
         </section>

@@ -3,14 +3,24 @@ import Button from "../../atoms/Button/Button";
 import Input from "../../atoms/Input/Input";
 import "./EditProfileModal.scss";
 
-export default function EditProfileModal({ alCerrar, nombreActual, bioActual, alGuardar }) {
+export default function EditProfileModal({ alCerrar, nombreActual, bioActual, fotoActual, alGuardar }) {
     const [nombre, setNombre] = useState(nombreActual);
     const [bio, setBio] = useState(bioActual);
+    const [fotoUrl, setFotoUrl] = useState(fotoActual);
+    const [archivoNuevo, setArchivoNuevo] = useState(null);
+
+    function manejarCambioFoto(e) {
+        const archivo = e.target.files[0];
+        if (archivo) {
+            setArchivoNuevo(archivo);
+            setFotoUrl(URL.createObjectURL(archivo)); 
+        }
+    }
 
     function manejarEnvio(e) {
         e.preventDefault();
-        alGuardar(nombre, bio);
-        alCerrar();
+        alGuardar(nombre, bio, fotoUrl);
+        alCerrar(); 
     }
 
     return (
@@ -22,6 +32,19 @@ export default function EditProfileModal({ alCerrar, nombreActual, bioActual, al
                 </header>
 
                 <form onSubmit={manejarEnvio} className="formulario-edicion">
+                    
+                    <div className="seccion-foto-edicion">
+                        <img src={fotoUrl} alt="Vista previa avatar" className="avatar-edicion" />
+                        <label htmlFor="input-nueva-foto" className="boton-cambiar-foto">Cambiar foto</label>
+                        <input 
+                            type="file" 
+                            id="input-nueva-foto" 
+                            accept="image/*" 
+                            onChange={manejarCambioFoto} 
+                            style={{ display: "none" }} 
+                        />
+                    </div>
+
                     <Input 
                         id="editar-nombre"
                         label="Nombre"
