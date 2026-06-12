@@ -34,51 +34,53 @@ export default function Register() {
     }
 
     return (
-        <main className="contenedor-registro">
-            <header className="cabecera-registro">
-                <figure className="logo">
-                    <span role="img" aria-label="Logo U|Gallery">🐐</span>
-                </figure>
-                <h1>Te damos la bienvenida a U|Gallery</h1>
-                <p>Encuentra nuevas ideas para experimentar</p>
-            </header>
+        <div className="pantalla-centrada">
+            <main className="contenedor-registro">
+                <header className="cabecera-registro">
+                    <figure className="logo">
+                        <span role="img" aria-label="Logo U|Gallery">🐐</span>
+                    </figure>
+                    <h1>Te damos la bienvenida a U|Gallery</h1>
+                    <p>Encuentra nuevas ideas para experimentar</p>
+                </header>
 
-            <form onSubmit={handleSubmit}>
-                <Input 
-                    id="registro-correo"
-                    label="Correo electrónico"
-                    tipo="email"
-                    placeholder="Correo electrónico"
-                    valor={correo}
-                    alCambiar={(e) => setCorreo(e.target.value)}
-                />
+                <form onSubmit={handleSubmit}>
+                    <Input 
+                        id="registro-correo"
+                        label="Correo electrónico"
+                        tipo="email"
+                        placeholder="Correo electrónico"
+                        valor={correo}
+                        alCambiar={(e) => setCorreo(e.target.value)}
+                    />
 
-                <PasswordInput 
-                    id="registro-password"
-                    label="Contraseña"
-                    placeholder="Crea una contraseña"
-                    valor={password}
-                    alCambiar={(e) => setPassword(e.target.value)}
-                />
-                <small className="texto-ayuda">Usa ocho o más letras, números y símbolos</small>
+                    <PasswordInput 
+                        id="registro-password"
+                        label="Contraseña"
+                        placeholder="Crea una contraseña"
+                        valor={password}
+                        alCambiar={(e) => setPassword(e.target.value)}
+                    />
+                    <small className="texto-ayuda">Usa ocho o más letras, números y símbolos</small>
 
-                <Input 
-                    id="registro-fecha"
-                    label="Fecha de nacimiento"
-                    tipo="date"
-                    placeholder=""
-                    valor={fechaNacimiento}
-                    alCambiar={(e) => setFechaNacimiento(e.target.value)}
-                />
+                    <Input 
+                        id="registro-fecha"
+                        label="Fecha de nacimiento"
+                        tipo="date"
+                        placeholder=""
+                        valor={fechaNacimiento}
+                        alCambiar={(e) => setFechaNacimiento(e.target.value)}
+                    />
 
-                <Button texto="Continuar" tipo="submit" />
-            </form>
+                    <Button texto="Continuar" tipo="submit" />
+                </form>
 
-            <footer className="pie-formulario">
-                <p className="texto-login">
-                    ¿Ya tienes una cuenta? <a href="/login">Iniciar sesión</a>
-                </p>
-            </footer>
-        </main>
+                <footer className="pie-formulario">
+                    <p className="texto-login">
+                        ¿Ya eres miembro? <a href="/login">Iniciar sesión</a>
+                    </p>
+                </footer>
+            </main>
+        </div>
     );
 }

@@ -28,48 +28,50 @@ export default function Login() {
                 console.log("Login incorrecto");
             }
         } catch (error) {
-            console.error("Error al conectar con la API de U|Stream", error);
+            console.error("Error al conectar con la API", error);
         }
     }
 
     return (
-        <main className="contenedor-login">
-            <header className="cabecera-login">
-                <figure className="logo">
-                    <span role="img" aria-label="Logo U|Gallery">🐐</span>
-                </figure>
-                <h1>Te damos la bienvenida a U|Gallery</h1>
-                <p>Introduce tus credenciales para ingresar</p>
-            </header>
+        <div className="pantalla-centrada">
+            <main className="contenedor-login">
+                <header className="cabecera-login">
+                    <figure className="logo">
+                        <span role="img" aria-label="Logo U|Gallery">🐐</span>
+                    </figure>
+                    <h1>Te damos la bienvenida a U|Gallery</h1>
+                    <p>Introduce tus credenciales para ingresar</p>
+                </header>
 
-            <form onSubmit={handleSubmit}>
-                <Input 
-                    id="login-email"
-                    label="Correo Electrónico"
-                    tipo="email"
-                    placeholder="Tu correo"
-                    valor={correo}
-                    alCambiar={(e) => setCorreo(e.target.value)}
-                />
+                <form onSubmit={handleSubmit}>
+                    <Input 
+                        id="login-email"
+                        label="Correo Electrónico"
+                        tipo="email"
+                        placeholder="Tu correo"
+                        valor={correo}
+                        alCambiar={(e) => setCorreo(e.target.value)}
+                    />
 
-              <PasswordInput 
-                    id="login-password"
-                    label="Contraseña"
-                    placeholder="Introduce tu contraseña"
-                    valor={password}
-                    alCambiar={(e) => setPassword(e.target.value)}
-                />
-                
-                <a href="#" className="enlace-olvido">¿Olvidaste tu contraseña?</a>
+                    <PasswordInput 
+                        id="login-password"
+                        label="Contraseña"
+                        placeholder="Introduce tu contraseña"
+                        valor={password}
+                        alCambiar={(e) => setPassword(e.target.value)}
+                    />
+                    
+                    <a href="#" className="enlace-olvido">¿Olvidaste tu contraseña?</a>
 
-                <Button texto="Iniciar Sesión" tipo="submit" />
-            </form>
+                    <Button texto="Iniciar Sesión" tipo="submit" />
+                </form>
 
-            <footer className="pie-formulario">
-                <p className="texto-registro">
-                    No tienes una cuenta? <a href="/register">Regístrate</a>
-                </p>
-            </footer>
-        </main>
+                <footer className="pie-formulario">
+                    <p className="texto-registro">
+                        ¿Aún no estás en la web? <a href="/register">Regístrate</a>
+                    </p>
+                </footer>
+            </main>
+        </div>
     );
 }
