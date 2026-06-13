@@ -6,14 +6,9 @@
 
 .cabecera-tendencias {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     margin-bottom: 20px;
-}
-
-.cabecera-tendencias h2 {
-    font-size: 24px;
-    font-weight: 600;
 }
 
 .boton-tendencia {
@@ -25,7 +20,7 @@
     font-size: 15px;
     cursor: pointer;
     color: rgb(26, 26, 26);
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, border-color 0.3s, color 0.3s;
 }
 
 .boton-tendencia:hover {
@@ -37,11 +32,11 @@
     gap: 15px;
     overflow-x: auto;
     padding-bottom: 20px;
-    scrollbar-width: none; 
+    scrollbar-width: none;
 }
 
 .contenedor-etiquetas::-webkit-scrollbar {
-    display: none; 
+    display: none;
 }
 
 .etiqueta {
@@ -56,7 +51,7 @@
     white-space: nowrap;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, border-color 0.3s, color 0.3s;
 }
 
 .etiqueta:hover {
@@ -75,4 +70,24 @@
 .etiqueta span:last-child {
     color: rgb(136, 136, 136);
     font-weight: 400;
+}
+
+body.tema-oscuro .boton-tendencia {
+    background-color: #24252a;
+    border-color: #3a3b3c;
+    color: #ffffff;
+}
+
+body.tema-oscuro .boton-tendencia:hover {
+    background-color: #3a3b3c;
+}
+
+body.tema-oscuro .etiqueta {
+    background-color: #24252a;
+    border-color: #3a3b3c;
+    color: #ffffff;
+}
+
+body.tema-oscuro .etiqueta:hover {
+    background-color: #3a3b3c;
 }

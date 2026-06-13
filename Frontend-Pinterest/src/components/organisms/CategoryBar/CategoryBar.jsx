@@ -13,7 +13,6 @@ export default function CategoryBar() {
     return (
         <section className="seccion-tendencias">
             <header className="cabecera-tendencias">
-                <h2>Galería</h2>
                 <button className="boton-tendencia">Categorías &#9662;</button>
             </header>
             
