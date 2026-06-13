@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import UploadModal from "../UploadModal/UploadModal";
 import perfilImg from "../../../assets/images/perfil.webp";
@@ -7,11 +7,28 @@ import "./Header.scss";
 export default function Header() {
     const [modalAbierto, setModalAbierto] = useState(false);
     const [menuAbierto, setMenuAbierto] = useState(false);
+    
+    const [modoOscuro, setModoOscuro] = useState(() => {
+        return document.body.classList.contains("tema-oscuro");
+    });
+
     const navigate = useNavigate();
 
     function cerrarSesion() {
         navigate("/login");
     }
+
+    function alternarTema() {
+        setModoOscuro(!modoOscuro);
+    }
+
+    useEffect(() => {
+        if (modoOscuro) {
+            document.body.classList.add("tema-oscuro");
+        } else {
+            document.body.classList.remove("tema-oscuro");
+        }
+    }, [modoOscuro]);
 
     return (
         <>
@@ -37,6 +54,15 @@ export default function Header() {
                     </nav>
 
                     <menu className="menu-derecho">
+                        <span 
+                            className="icono-accion" 
+                            onClick={alternarTema}
+                            aria-label="Alternar tema"
+                            title="Cambiar tema"
+                        >
+                            {modoOscuro ? "☀️" : "🌙"}
+                        </span>
+
                         <div className="contenedor-opciones">
                             <span 
                                 className="icono-nav" 
@@ -47,7 +73,6 @@ export default function Header() {
                             
                             {menuAbierto && (
                                 <div className="menu-desplegable">
-                                    {/* Pasamos el state={{ abrirEdicion: true }} */}
                                     <Link 
                                         to="/profile" 
                                         state={{ abrirEdicion: true }} 

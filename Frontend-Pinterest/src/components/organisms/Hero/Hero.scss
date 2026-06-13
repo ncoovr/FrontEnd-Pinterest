@@ -1,7 +1,7 @@
 .seccion-hero {
     padding: 20px 24px 20px 24px;
     max-width: 800px;
-    margin: 0 auto; /* Esto ayuda a que el título quede centrado en pantallas grandes */
+    margin: 0 auto; 
 }
 
 .contenido-hero h1 {
@@ -9,4 +9,36 @@
     line-height: 1.2;
     margin-bottom: 25px;
     font-weight: 700;
+}
+
+body.tema-oscuro .contenido-hero h1 {
+    color: #ffffff;
+}
+
+body.tema-oscuro .barra-busqueda {
+    background-color: #24252a;
+}
+
+body.tema-oscuro .barra-busqueda input {
+    color: #ffffff;
+}
+
+body.tema-oscuro .barra-busqueda input::placeholder {
+    color: #a5a6a9;
+}
+
+body.tema-oscuro .boton-busqueda {
+    color: #a5a6a9;
+}
+
+body.tema-oscuro .boton-tendencia,
+body.tema-oscuro .etiqueta {
+    background-color: #24252a;
+    border-color: #3a3b3c;
+    color: #ffffff;
+}
+
+body.tema-oscuro .boton-tendencia:hover,
+body.tema-oscuro .etiqueta:hover {
+    background-color: #3a3b3c;
 }
