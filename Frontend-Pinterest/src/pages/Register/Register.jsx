@@ -24,8 +24,10 @@ export default function Register() {
             const data = await response.json();
             
             if (data.success) {
+                alert("Usuario registrado exitosamente");
                 navigate("/login");
             } else {
+                alert(data.detail || "Error en el registro");
                 console.log("Error en el registro");
             }
         } catch (error) {

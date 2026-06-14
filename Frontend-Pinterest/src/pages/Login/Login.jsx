@@ -23,8 +23,10 @@ export default function Login() {
             const data = await response.json();
             
             if (data.success) {
+                localStorage.setItem("token", data.token);
                 navigate("/index");
             } else {
+                alert(data.detail || "Login incorrecto");
                 console.log("Login incorrecto");
             }
         } catch (error) {

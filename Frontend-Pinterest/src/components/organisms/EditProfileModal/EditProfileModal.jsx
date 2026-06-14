@@ -19,7 +19,7 @@ export default function EditProfileModal({ alCerrar, nombreActual, bioActual, fo
 
     function manejarEnvio(e) {
         e.preventDefault();
-        alGuardar(nombre, bio, fotoUrl);
+        alGuardar(nombre, bio, archivoNuevo);
         alCerrar(); 
     }
 

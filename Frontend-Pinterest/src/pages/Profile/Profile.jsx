@@ -9,10 +9,33 @@ import "./Profile.scss";
 export default function Profile() {
     const location = useLocation();
 
+    const [usuario, setUsuario] = useState(null);
     const [nombre, setNombre] = useState("Nicolás Andrés Velasco Reyes");
     const [bio, setBio] = useState("Estudiante de Ingeniería en Sistemas. Apasionado por la carrera, el desarrollo y el aprendizaje autónomo.");
     const [fotoPerfil, setFotoPerfil] = useState(perfilImg);
     const [modalAbierto, setModalAbierto] = useState(false);
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) return;
+
+        fetch("http://localhost:8000/api/users/me", {
+            headers: { "Authorization": `Bearer ${token}` }
+        })
+        .then(res => {
+            if (res.ok) return res.json();
+            throw new Error("No autorizado");
+        })
+        .then(data => {
+            setUsuario(data);
+            setNombre(data.nombre || "");
+            setBio(data.bio || "");
+            if (data.avatar_url) {
+                setFotoPerfil(data.avatar_url);
+            }
+        })
+        .catch(err => console.error("Error al obtener perfil:", err));
+    }, []);
 
     useEffect(() => {
         if (location.state?.abrirEdicion) {
@@ -21,11 +44,47 @@ export default function Profile() {
         }
     }, [location]);
 
-    function guardarPerfil(nuevoNombre, nuevaBio, nuevaFotoUrl) {
-        setNombre(nuevoNombre);
-        setBio(nuevaBio);
-        if (nuevaFotoUrl) {
-            setFotoPerfil(nuevaFotoUrl);
+    async function guardarPerfil(nuevoNombre, nuevaBio, archivoNuevo) {
+        const token = localStorage.getItem("token");
+        if (!token) return;
+
+        try {
+            const res = await fetch("http://localhost:8000/api/users/me", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({ nombre: nuevoNombre, bio: nuevaBio })
+            });
+            if (!res.ok) throw new Error("Error al actualizar perfil");
+            const data = await res.json();
+            setNombre(data.nombre);
+            setBio(data.bio || "");
+
+            if (archivoNuevo) {
+                const formData = new FormData();
+                formData.append("file", archivoNuevo);
+
+                const avatarRes = await fetch("http://localhost:8000/api/users/me/avatar", {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: formData
+                });
+                if (avatarRes.ok) {
+                    const avatarData = await avatarRes.json();
+                    setFotoPerfil(avatarData.avatar_url);
+                    setUsuario(prev => prev ? { ...prev, avatar_url: avatarData.avatar_url } : null);
+                } else {
+                    console.error("Error al subir avatar");
+                }
+            }
+            alert("Perfil actualizado con éxito");
+        } catch (error) {
+            console.error(error);
+            alert("Error al actualizar el perfil");
         }
     }
 
@@ -60,7 +119,7 @@ export default function Profile() {
                     </menu>
                 </section>
 
-                <GalleryGrid />
+                <GalleryGrid creatorId={usuario?.id_usuario} />
             </main>
 
             {modalAbierto && (

@@ -8,10 +8,41 @@ export default function UploadModal({ alCerrar }) {
     const [descripcion, setDescripcion] = useState("");
     const [archivo, setArchivo] = useState(null);
 
-    function manejarEnvio(e) {
+    async function manejarEnvio(e) {
         e.preventDefault();
-        console.log("Subiendo archivo:", archivo, "Título:", titulo);
-        alCerrar();
+        
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("Debes iniciar sesión para subir una publicación");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("titulo", titulo);
+        formData.append("descripcion", descripcion);
+        formData.append("file", archivo);
+
+        try {
+            const res = await fetch("http://localhost:8000/api/posts", {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                },
+                body: formData
+            });
+
+            if (res.ok) {
+                alert("¡Publicación creada exitosamente!");
+                alCerrar();
+                window.location.reload();
+            } else {
+                const errorData = await res.json();
+                alert(errorData.detail || "Error al subir la publicación");
+            }
+        } catch (error) {
+            console.error("Error de conexión al subir publicación:", error);
+            alert("Error al conectar con el servidor");
+        }
     }
 
     return (

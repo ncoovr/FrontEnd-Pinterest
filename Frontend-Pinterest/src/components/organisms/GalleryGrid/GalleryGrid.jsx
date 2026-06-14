@@ -1,27 +1,44 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./GalleryGrid.scss";
 
-export default function GalleryGrid() {
-    const imagenes = [
-        "https://images.pexels.com/photos/9329047/pexels-photo-9329047.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/9221307/pexels-photo-9221307.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/1666667/pexels-photo-1666667.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/36770103/pexels-photo-36770103.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/30150825/pexels-photo-30150825.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/35719467/pexels-photo-35719467.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/15988007/pexels-photo-15988007.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/12379827/pexels-photo-12379827.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/3724836/pexels-photo-3724836.jpeg?auto=compress&cs=tinysrgb&w=600"
-    ];
+export default function GalleryGrid({ creatorId, query, shuffle }) {
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        let url = "http://localhost:8000/api/posts";
+        const params = [];
+        if (creatorId) {
+            params.push(`user_id=${creatorId}`);
+        }
+        if (query) {
+            params.push(`q=${encodeURIComponent(query)}`);
+        }
+        if (params.length > 0) {
+            url += "?" + params.join("&");
+        }
+
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                if (Array.isArray(data)) {
+                    const sorted = shuffle ? [...data].sort(() => Math.random() - 0.5) : data;
+                    setPosts(sorted);
+                }
+            })
+            .catch(err => console.error("Error al cargar publicaciones:", err));
+    }, [creatorId, query, shuffle]);
 
     return (
         <section className="cuadricula-galeria">
-            {imagenes.map((imgUrl, index) => (
-                <Link to="/post" key={index} className="enlace-tarjeta">
-                    <img src={imgUrl} alt={`Contenido de galería ${index + 1}`} />
+            {posts.map((post) => (
+                <Link to={`/post?id=${post.id_post}`} key={post.id_post} className="enlace-tarjeta">
+                    <img src={post.image_url} alt={post.titulo} />
                 </Link>
             ))}
+            {posts.length === 0 && (
+                <p className="sin-contenido">No hay publicaciones aún.</p>
+            )}
         </section>
     );
 }

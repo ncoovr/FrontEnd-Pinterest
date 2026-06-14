@@ -7,6 +7,7 @@ import "./Header.scss";
 export default function Header() {
     const [modalAbierto, setModalAbierto] = useState(false);
     const [menuAbierto, setMenuAbierto] = useState(false);
+    const [usuario, setUsuario] = useState(null);
     
     const [modoOscuro, setModoOscuro] = useState(() => {
         return document.body.classList.contains("tema-oscuro");
@@ -14,7 +15,29 @@ export default function Header() {
 
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) return;
+        
+        fetch("http://localhost:8000/api/users/me", {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        .then(res => {
+            if (res.ok) return res.json();
+            throw new Error("No autorizado");
+        })
+        .then(data => {
+            setUsuario(data);
+        })
+        .catch(err => {
+            console.error("Error al obtener usuario en Header:", err);
+        });
+    }, []);
+
     function cerrarSesion() {
+        localStorage.removeItem("token");
         navigate("/login");
     }
 
@@ -86,7 +109,7 @@ export default function Header() {
                         </div>
 
                         <Link to="/profile">
-                            <img src={perfilImg} alt="Tu Avatar" className="avatar-nav-img" />
+                            <img src={(usuario && usuario.avatar_url) ? usuario.avatar_url : perfilImg} alt="Tu Avatar" className="avatar-nav-img" />
                         </Link>
                     </menu>
                 </nav>
