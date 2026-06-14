@@ -14,6 +14,9 @@ export default function Profile() {
     const [bio, setBio] = useState("Estudiante de Ingeniería en Sistemas. Apasionado por la carrera, el desarrollo y el aprendizaje autónomo.");
     const [fotoPerfil, setFotoPerfil] = useState(perfilImg);
     const [modalAbierto, setModalAbierto] = useState(false);
+    const [activeTab, setActiveTab] = useState("creados");
+    const [createdCount, setCreatedCount] = useState(0);
+    const [likedCount, setLikedCount] = useState(0);
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -33,6 +36,24 @@ export default function Profile() {
             if (data.avatar_url) {
                 setFotoPerfil(data.avatar_url);
             }
+
+            fetch(`http://localhost:8000/api/posts?user_id=${data.id_usuario}`)
+                .then(res => res.json())
+                .then(postsData => {
+                    if (Array.isArray(postsData)) {
+                        setCreatedCount(postsData.length);
+                    }
+                })
+                .catch(err => console.error("Error al obtener conteo de creados:", err));
+
+            fetch(`http://localhost:8000/api/posts?liked_by=${data.id_usuario}`)
+                .then(res => res.json())
+                .then(postsData => {
+                    if (Array.isArray(postsData)) {
+                        setLikedCount(postsData.length);
+                    }
+                })
+                .catch(err => console.error("Error al obtener conteo de likes:", err));
         })
         .catch(err => console.error("Error al obtener perfil:", err));
     }, []);
@@ -109,17 +130,37 @@ export default function Profile() {
 
                 <section className="seccion-pestanas">
                     <nav className="pestanas-izquierda">
-                        <a href="#" className="enlace-pestana">Destacados <span>0</span></a>
-                        <a href="#" className="enlace-pestana activo">Creados <span>18</span></a>
-                        <a href="#" className="enlace-pestana">Guardados</a>
+                        <a 
+                            href="#" 
+                            className={`enlace-pestana ${activeTab === "destacados" ? "activo" : ""}`}
+                            onClick={(e) => { e.preventDefault(); setActiveTab("destacados"); }}
+                        >
+                            Destacados <span>{likedCount}</span>
+                        </a>
+                        <a 
+                            href="#" 
+                            className={`enlace-pestana ${activeTab === "creados" ? "activo" : ""}`}
+                            onClick={(e) => { e.preventDefault(); setActiveTab("creados"); }}
+                        >
+                            Creados <span>{createdCount}</span>
+                        </a>
+                        <a 
+                            href="#" 
+                            className={`enlace-pestana ${activeTab === "guardados" ? "activo" : ""}`}
+                            onClick={(e) => { e.preventDefault(); setActiveTab("guardados"); }}
+                        >
+                            Guardados <span>{likedCount}</span>
+                        </a>
                     </nav>
-                    
-                    <menu className="filtros-derecha">
-                        <button className="boton-filtro">Favoritos &#9662;</button>
-                    </menu>
                 </section>
 
-                <GalleryGrid creatorId={usuario?.id_usuario} />
+                {usuario && (
+                    activeTab === "creados" ? (
+                        <GalleryGrid creatorId={usuario.id_usuario} />
+                    ) : (
+                        <GalleryGrid likedBy={usuario.id_usuario} />
+                    )
+                )}
             </main>
 
             {modalAbierto && (

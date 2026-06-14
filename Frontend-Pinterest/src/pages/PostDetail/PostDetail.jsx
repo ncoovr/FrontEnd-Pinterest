@@ -165,7 +165,16 @@ export default function PostDetail() {
                                         Eliminar
                                     </button>
                                 )}
-                                <button className="boton-guardar">Guardar</button>
+                                <button 
+                                    className="boton-guardar"
+                                    style={{
+                                        backgroundColor: post.liked_by_me ? "#3a3b3c" : "#e60023",
+                                        color: "white"
+                                    }}
+                                    onClick={handleLike}
+                                >
+                                    {post.liked_by_me ? "Guardado" : "Guardar"}
+                                </button>
                             </div>
                         </div>
  

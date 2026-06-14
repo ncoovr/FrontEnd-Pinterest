@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./GalleryGrid.scss";
 
-export default function GalleryGrid({ creatorId, query, shuffle }) {
+export default function GalleryGrid({ creatorId, likedBy, query, shuffle }) {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -10,6 +10,9 @@ export default function GalleryGrid({ creatorId, query, shuffle }) {
         const params = [];
         if (creatorId) {
             params.push(`user_id=${creatorId}`);
+        }
+        if (likedBy) {
+            params.push(`liked_by=${likedBy}`);
         }
         if (query) {
             params.push(`q=${encodeURIComponent(query)}`);
@@ -27,7 +30,7 @@ export default function GalleryGrid({ creatorId, query, shuffle }) {
                 }
             })
             .catch(err => console.error("Error al cargar publicaciones:", err));
-    }, [creatorId, query, shuffle]);
+    }, [creatorId, likedBy, query, shuffle]);
 
     return (
         <section className="cuadricula-galeria">
