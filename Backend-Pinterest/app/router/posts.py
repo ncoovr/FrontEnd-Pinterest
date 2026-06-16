@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form, Query
 from sqlmodel import select, col
-from models import Post, Usuario, Like, Comment, PostResponse, CommentResponse, CommentCreate
+from models.modelsall import Post, Usuario, Like, Comment, PostResponse, CommentResponse, CommentCreate
 from db import SessionDep
 from auth_utils import get_current_user_id, get_optional_user_id, SECRET_KEY, ALGORITHM
 import jwt

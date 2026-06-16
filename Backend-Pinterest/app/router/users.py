@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
 from sqlmodel import select
-from models import Usuario, UserResponse, ProfileEdit
+from models.modelsall import Usuario, UserResponse, ProfileEdit
 from db import SessionDep
 from auth_utils import get_current_user_id
 import boto3

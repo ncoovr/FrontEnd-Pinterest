@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from typing import List
-from models import CategoryResponse
+from models.modelsall import CategoryResponse
 
 router = APIRouter(prefix="/api/categories", tags=["Categorías"])
 
