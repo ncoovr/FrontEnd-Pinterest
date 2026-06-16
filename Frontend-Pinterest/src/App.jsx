@@ -4,6 +4,7 @@ import Register from "./pages/Register/Register";
 import Index from "./pages/Index/Index";
 import PostDetail from "./pages/PostDetail/PostDetail";
 import Profile from "./pages/Profile/Profile";
+import Terms from "./pages/Terms/Terms";
 
 function App() {
     return (
@@ -13,8 +14,8 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/index" element={<Index />} />
             <Route path="/post" element={<PostDetail />} />
-            {}
             <Route path="/profile" element={<Profile />} />
+            <Route path="/terms" element={<Terms />} />
         </Routes>
     );
 }

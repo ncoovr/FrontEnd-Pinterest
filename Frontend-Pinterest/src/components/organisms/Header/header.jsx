@@ -103,6 +103,12 @@ export default function Header() {
                                     >
                                         Editar perfil
                                     </Link>
+                                    <Link 
+                                        to="/terms" 
+                                        onClick={() => setMenuAbierto(false)}
+                                    >
+                                        Términos y Condiciones
+                                    </Link>
                                     <button onClick={cerrarSesion}>Cerrar sesión</button>
                                 </div>
                             )}

@@ -234,3 +234,47 @@ body.tema-oscuro .enlace-pestana.activo {
     background-color: #ffffff;
     color: #1a1a1a;
 }
+
+@media (max-width: 768px) {
+    .navegacion-superior {
+        padding: 8px 15px;
+    }
+    
+    .texto-logo {
+        display: none;
+    }
+    
+    .navegacion-central {
+        gap: 8px;
+    }
+    
+    .navegacion-central a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    
+    .menu-derecho {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 500px) {
+    .navegacion-central > a {
+        display: none;
+    }
+    
+    .boton-crear-nav {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+    
+    .avatar-nav-img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .icono-nav, .icono-accion {
+        font-size: 20px;
+    }
+}
