@@ -52,3 +52,36 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .texto-login a:hover {
     text-decoration: underline;
 }
+
+.contenedor-checkbox {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 24px;
+}
+
+.contenedor-checkbox label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #a5a6a9;
+    cursor: pointer;
+}
+
+.contenedor-checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #e60023;
+}
+
+.contenedor-checkbox a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.contenedor-checkbox a:hover {
+    text-decoration: underline;
+}

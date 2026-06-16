@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Register.scss";
 import Button from "../../components/atoms/Button/Button";
 import Input from "../../components/atoms/Input/Input";
@@ -9,10 +9,38 @@ export default function Register() {
     const [correo, setCorreo] = useState("");
     const [password, setPassword] = useState("");
     const [fechaNacimiento, setFechaNacimiento] = useState("");
+    const [terminosAceptados, setTerminosAceptados] = useState(false);
     const navigate = useNavigate();
+
+    const calcularEdad = (fecha) => {
+        const hoy = new Date();
+        const nacimiento = new Date(fecha);
+        let edad = hoy.getFullYear() - nacimiento.getFullYear();
+        const mes = hoy.getMonth() - nacimiento.getMonth();
+        if (mes < 0 || (mes === 0 && hoy.getDate() < nacimiento.getDate())) {
+            edad--;
+        }
+        return edad;
+    };
 
     async function handleSubmit(event) {
         event.preventDefault();
+        
+        if (!fechaNacimiento) {
+            alert("Por favor, ingresa tu fecha de nacimiento");
+            return;
+        }
+        
+        if (calcularEdad(fechaNacimiento) < 18) {
+            alert("Debes tener al menos 18 años para registrarte en U|Gallery.");
+            return;
+        }
+
+        if (!terminosAceptados) {
+            alert("Debes aceptar los Términos y Condiciones para continuar.");
+            return;
+        }
+
         const datos = { correo, password, fechaNacimiento };
         
         try {
@@ -28,7 +56,6 @@ export default function Register() {
                 navigate("/login");
             } else {
                 alert(data.detail || "Error en el registro");
-                console.log("Error en el registro");
             }
         } catch (error) {
             console.error("Error de conexión", error);
@@ -74,12 +101,23 @@ export default function Register() {
                         alCambiar={(e) => setFechaNacimiento(e.target.value)}
                     />
 
+                    <div className="contenedor-checkbox">
+                        <label>
+                            <input 
+                                type="checkbox" 
+                                checked={terminosAceptados}
+                                onChange={(e) => setTerminosAceptados(e.target.checked)}
+                            />
+                            <span>Acepto los <Link to="/terms">Términos y Condiciones</Link></span>
+                        </label>
+                    </div>
+
                     <Button texto="Continuar" tipo="submit" />
                 </form>
 
                 <footer className="pie-formulario">
                     <p className="texto-login">
-                        ¿Ya eres miembro? <a href="/login">Iniciar sesión</a>
+                        ¿Ya eres miembro? <Link to="/login">Iniciar sesión</Link>
                     </p>
                 </footer>
             </main>
