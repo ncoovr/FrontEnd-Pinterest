@@ -53,6 +53,15 @@
     align-items: center;
     justify-content: center;
     user-select: none;
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.icono-accion svg,
+.icono-nav svg {
+    width: 22px;
+    height: 22px;
 }
 
 .icono-accion:hover {
