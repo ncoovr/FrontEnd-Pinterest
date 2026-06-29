@@ -57,3 +57,53 @@ Para ejecutar el proyecto en tu máquina local, sigue estos pasos:
 ```bash
 git clone [https://github.com/ncoovr/FrontEnd-Pinterest.git](https://github.com/ncoovr/FrontEnd-Pinterest.git)
 cd FrontEnd-Pinterest
+
+
+## Configuracion del Backend
+# Navegar a la carpeta del backend
+cd Backend-Pinterest
+
+# Crear y activar entorno virtual (Windows)
+python -m venv .venv
+.venv\Scripts\activate
+
+# Instalar dependencias
+pip install -r requirements.txt
+
+# Duplica el archivo .env.example, renómbralo a .env y configura tus credenciales (este archivo está ignorado en Git por seguridad):
+
+AWS_ACCESS_KEY_ID="tu_access_key"
+AWS_SECRET_ACCESS_KEY="tu_secret_key"
+AWS_S3_BUCKET="nombre_de_tu_bucket"
+AWS_DEFAULT_REGION="us-east-1"
+
+# Ejecutar Servidor Backend
+uvicorn main:app --reload
+La documentación automática (Swagger UI) estará disponible en: http://127.0.0.1:8000/docs
+
+# Configuración del Frontend (React/Vite)
+# Navegar a la carpeta del frontend
+cd FrontEnd-Pinterest
+
+# Instalar módulos de Node
+npm install
+
+# Levantar el servidor de desarrollo
+npm run dev
+La aplicación estará disponible en: http://localhost:5173
+
+U-GALLERY/
+├── Backend-Pinterest/       # Lógica del servidor e integración Cloud
+│   ├── app/
+│   │   ├── routers/         # Endpoints modulares (auth, posts, users)
+│   │   ├── models.py        # Esquemas de base de datos (SQLModel)
+│   │   └── auth_utils.py    # Lógica JWT y encriptación
+│   ├── main.py              # Entry point y configuración CORS
+│   └── requirements.txt     # Dependencias de Python
+│
+└── FrontEnd-Pinterest/      # Interfaz gráfica y consumo de API
+    ├── src/
+    │   ├── components/      # Diseño Atómico
+    │   ├── pages/           # Vistas (Index, Login, Register, Profile)
+    │   └── styles/          # Hojas de estilo
+    └── package.json         # Dependencias de Node
